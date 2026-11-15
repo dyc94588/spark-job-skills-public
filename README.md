@@ -45,7 +45,7 @@ Flask 3 · SQLite / MySQL 8.0.46 · ECharts · Chrome DevTools Protocol（仅公
 ## 快速开始（无需 MySQL）
 
 ```bash
-git clone <你的仓库地址>
+git clone https://github.com/dyc94588/spark-job-skills-public.git
 cd spark-job-skills-public
 python -m venv .venv && .venv\Scripts\activate      # Linux/macOS: source .venv/bin/activate
 pip install -r experiments/requirements.txt

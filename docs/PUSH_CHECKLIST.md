@@ -151,7 +151,7 @@ git add .
 git status          # 逐行确认：没有 .env、mysql_config.json、*.db、大 CSV
 git commit -m "feat: Spark 招聘岗位技能挖掘与趋势预测系统（代码与实验结果）"
 git branch -M main
-git remote add origin https://github.com/<你的用户名>/spark-job-skills-public.git
+git remote add origin https://github.com/dyc94588/spark-job-skills-public.git
 git push -u origin main
 ```
 
@@ -170,8 +170,8 @@ git push -u origin main
 | 敏感项复扫（真名 / 学号 / 导师 / 学院 / 口令 / 本机路径 / 本机账户名） | 0 命中 ✅ |
 | `git commit`（化名身份 `SparkJobSkills Contributors`） | 已完成 ✅ |
 | 分支 `main` | 已完成 ✅ |
-| `git remote add origin <新用户名对应的仓库地址>` | 待提供新 GitHub 用户名或仓库链接 |
-| `git push -u origin main` | 待 GitHub 授权或本地登录 |
+| `git remote add origin https://github.com/dyc94588/spark-job-skills-public.git` | 已生成，待推送 |
+| `git push -u origin main` | GitHub 已授权（`dyc94588`），待推送 |
 
 因此上面的推送命令块里，**只需执行 `git remote add origin …` 与 `git push -u origin main` 两行**；
 若通过 GitHub Connector 授权，则由 AI 直接完成这两步。
