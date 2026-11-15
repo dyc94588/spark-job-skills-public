@@ -161,7 +161,7 @@ git push -u origin main
    `Insights → Traffic` 无异常；顺手把仓库描述写成
    "Spark + Flask 招聘岗位技能挖掘与趋势预测系统 | 本科毕业设计"。
 
-## 当前进度（2026-11-15 21:2x，桌面本地仓库）
+## 当前进度（2026-11-15 22:10，已推送上线）
 
 | 项 | 状态 |
 |---|---|
@@ -172,10 +172,11 @@ git push -u origin main
 | 分支 `main` | 已完成 ✅ |
 | `git remote add origin https://github.com/dyc94588/spark-job-skills-public.git` | 已配置 ✅ |
 | 线上空仓库 `dyc94588/spark-job-skills-public`（Public） | 已创建 ✅ |
-| `git push -u origin main` | **待生成 PAT 并双击 `push-to-github.bat`** |
+| `git push -u origin main` | **已完成 ✅**（`EXIT=0`，远端 `main` 已建立） |
+| 线上文件 / 图片 / README 渲染核对 | 已完成 ✅（详见「推送完成」节） |
 
-上面的推送命令块仅作从零开始的参考；当前仓库已完成 init / 配置 / 提交，
-只需按下方「现在只差一步」完成认证并 push。
+上面的推送命令块仅作从零开始的参考；当前仓库已完成 init / 配置 / 提交 / 推送，
+详见下方「推送完成」节。
 
 ## 21:35 推送受阻诊断（已实测，避免重复踩坑）
 
@@ -191,23 +192,26 @@ git push -u origin main
 | 本机终端通道 push | `Invalid username or token. Password authentication is not supported` | 旧密码 + 本机无 GCM，无法 OAuth → 需 PAT ❌ |
 | 本机终端通道（清空全部代理） | `ls-remote` EXIT=0、SSL 正常（空仓库无 refs） | 网络可用，只差有效凭据 ✅ |
 
-### 现在只差一步（2026-11-15 21:55）
+### 推送完成（2026-11-15 22:10）
 
-仓库已由你在网页建好：Public、空、无 README（截图确认，远端 `refs/heads/main` 返回 409 Git Repository is empty）。
-连接通道对该新仓库**没有写权限**（403）；WorkBuddy 沙箱代理到 GitHub 返回 502；
-本机终端通道网络与 SSL 正常，但缓存凭据是**旧密码**（GitHub 已不支持密码推送），
-且本机没有 Git Credential Manager，无法自动弹浏览器 OAuth 登录。
+线上地址：<https://github.com/dyc94588/spark-job-skills-public>（Public）。
+通过本机终端通道 + 一次性 PAT 完成 `git push -u origin main`，`EXIT=0`；
+推送后 `remote` 已恢复为**不含凭据的干净 URL**，令牌未写入仓库、脚本或任何文档。
 
-**步骤（约 1 分钟）**：
+| 核对项 | 结果 |
+|---|---|
+| 远端 `refs/heads/main` 与本地 HEAD | 一致（`git ls-remote` 复核）✅ |
+| 本地提交 | 7 个（含本次清单更新） |
+| 文件总数 | 116 个 / 2.94 MB |
+| 图片 | **21 张**（`figures/` 15 + `screenshots/` 6），线上目录逐一核对齐全 ✅ |
+| README 引用的 3 张预览图 | 路径均存在，可正常渲染 ✅ |
+| 根目录结构 | `README.md` / `LICENSE` / `NOTICE.md` / `.gitignore` / `.env.example` / `docs` / `experiments` / `figures` / `screenshots` ✅ |
+| 敏感项 | 真名 / 学号 / 指导教师 / 学院 / 口令 / 本机路径 / 本机账户名 0 命中 ✅ |
 
-1. 打开 <https://github.com/settings/tokens/new> → Note 随意、Expiration 选 7 days、
-   勾选 **`repo`** → Generate token → 复制 `ghp_...`。
-2. 双击桌面 `push-to-github.bat`（内部调用 `push-github.ps1`），在黑窗口里**隐藏粘贴**令牌并回车。
-   脚本用 `GIT_CONFIG_NOSYSTEM=1` 绕过旧凭据助手，临时把令牌写进 remote URL 执行
-   `git push -u origin main`，随后立即恢复原 URL；令牌不回显、不写进仓库、不需要发到聊天里。
-3. 看到 `[OK] Push succeeded.` 即完成；若 `[FAIL]`，把黑窗口报错截图发我。
+> 后续如需再次推送，优先双击桌面 `push-to-github.bat` 隐藏粘贴新令牌。
+> 令牌不要在聊天、文档或代码里明文传递，用完及时在 GitHub 的 token 页面 Revoke。
 
-一次推完 **116 个文件（含 22 张图片）与 6 个本地提交**。
+一次推完 **116 个文件（含 21 张图片）与 7 个本地提交**。
 
 > **21:49 首次双击报错**：`'git' 不是内部或外部命令` —— 系统 PATH 没有 git，已改为直接调用便携版
 > `C:\Users\25740\.workbuddy\binaries\PortableGit\versions\1.3.0\cmd\git.exe`。
@@ -217,7 +221,7 @@ git push -u origin main
 
 > 你的浏览器能正常打开 GitHub，说明本机网络没问题；502 只发生在 WorkBuddy 沙箱代理里。
 
-## 推送前仍需你确认
+## 仍需你确认（公开时机）
 
 - **公开时机**：本仓库不含论文正文，风险已大幅降低；但若院系对毕业设计成果提前公开有规定，
   仍建议先问一句指导教师。
