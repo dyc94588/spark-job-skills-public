@@ -1,0 +1,14 @@
+序号,环境项,实测值,获取方式
+1,服务端版本,8.0.46,SELECT VERSION()
+2,发行形态,MySQL Community Server (GPL) 免安装便携版,mysqld --version（安装包核验）
+3,监听端口与地址,127.0.0.1:3306,SELECT @@会话变量
+4,服务端字符集,utf8mb4,SELECT @@会话变量
+5,排序规则,utf8mb4_unicode_ci,SELECT @@会话变量
+6,默认存储引擎,InnoDB,SELECT @@会话变量
+7,最大连接数,151,SELECT @@会话变量
+8,InnoDB 缓冲池(MB),128,SELECT @@会话变量
+9,编译平台,Win64,SELECT @@会话变量
+10,当前连接账号,thesis_app@127.0.0.1,SELECT CURRENT_USER()
+11,当前数据库,thesis_skill,SELECT DATABASE()
+12,数据目录,<WORKSPACE>\tools\mysql-data\,SELECT @@会话变量
+13,服务端索引总数,19,information_schema.STATISTICS

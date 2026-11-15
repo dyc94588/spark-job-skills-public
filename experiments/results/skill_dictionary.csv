@@ -1,0 +1,81 @@
+skill_std,expression,type
+Python,Python,规范名
+Python,py,别名
+Python,python3,别名
+Python,使用脚本语言完成数据清洗,隐式表达
+SQL,SQL,规范名
+SQL,结构化查询语言,别名
+SQL,sql查询,别名
+SQL,编写复杂取数语句,隐式表达
+Spark,Spark,规范名
+Spark,pyspark,别名
+Spark,spark sql,别名
+Spark,大规模分布式计算平台开发经验,隐式表达
+Hadoop,Hadoop,规范名
+Hadoop,hdfs,别名
+Hadoop,mapreduce,别名
+Hadoop,离线数仓集群运维,隐式表达
+Hive,Hive,规范名
+Hive,hive sql,别名
+Hive,hql,别名
+Hive,数据仓库分层建模,隐式表达
+Flink,Flink,规范名
+Flink,flink sql,别名
+Flink,实时流处理链路开发,隐式表达
+Kafka,Kafka,规范名
+Kafka,kafka stream,别名
+Kafka,消息队列数据接入,隐式表达
+Linux,Linux,规范名
+Linux,shell,别名
+Linux,centos,别名
+Linux,服务器环境部署与调优,隐式表达
+ETL,ETL,规范名
+ETL,数据抽取,别名
+ETL,etl开发,别名
+ETL,负责数据管道的建设与维护,隐式表达
+Airflow,Airflow,规范名
+Airflow,dolphinscheduler,别名
+Airflow,任务调度,别名
+Airflow,工作流定时调度编排,隐式表达
+Pandas,Pandas,规范名
+Pandas,pd.DataFrame,别名
+Pandas,numpy,别名
+Pandas,使用数据框完成统计分析,隐式表达
+Power BI,Power BI,规范名
+Power BI,powerbi,别名
+Power BI,tableau,别名
+Power BI,能用BI工具搭建管理看板,隐式表达
+Excel,Excel,规范名
+Excel,透视表,别名
+Excel,vba,别名
+Excel,熟练使用办公表格软件,隐式表达
+机器学习,机器学习,规范名
+机器学习,machine learning,别名
+机器学习,ml,别名
+机器学习,scikit-learn,别名
+机器学习,构建分类与回归预测模型,隐式表达
+深度学习,深度学习,规范名
+深度学习,deep learning,别名
+深度学习,pytorch,别名
+深度学习,tensorflow,别名
+深度学习,神经网络模型训练经验,隐式表达
+统计学,统计学,规范名
+统计学,statistical modeling,别名
+统计学,假设检验,别名
+统计学,具备A/B实验设计能力,隐式表达
+数据可视化,数据可视化,规范名
+数据可视化,data visualization,别名
+数据可视化,echarts,别名
+数据可视化,将分析结论图表化呈现,隐式表达
+Java,Java,规范名
+Java,java8,别名
+Java,springboot,别名
+Java,后端服务接口开发,隐式表达
+Docker,Docker,规范名
+Docker,容器化,别名
+Docker,k8s,别名
+Docker,服务镜像打包与部署,隐式表达
+数据治理,数据治理,规范名
+数据治理,data governance,别名
+数据治理,指标体系,别名
+数据治理,统一指标口径与元数据管理,隐式表达

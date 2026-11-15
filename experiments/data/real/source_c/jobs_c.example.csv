@@ -1,0 +1,4 @@
+site,job_id,title,salary,city,exp,edu,company,tags,pub_time,url,keyword,page,crawl_time
+demo,demo_001,数据分析师,15-20k,上海,3-5年,本科,示例企业A,"SQL,Python,BI",2026-11-01,,数据分析,1,2026-11-15
+demo,demo_002,大数据开发工程师,20-30k,北京,3-5年,本科,示例企业B,"Spark,Hive,Java",2026-11-02,,大数据开发,1,2026-11-15
+demo,demo_003,算法工程师,25-40k,深圳,5-7年,硕士,示例企业C,"Python,机器学习",2026-11-03,,机器学习,1,2026-11-15

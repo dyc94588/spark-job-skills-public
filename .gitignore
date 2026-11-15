@@ -1,0 +1,38 @@
+# 本机配置与凭据（务必不要提交）
+.env
+experiments/system/mysql_config.json
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# 原始数据：许可与隐私原因，不在本仓库分发
+experiments/data/real/*.csv
+experiments/data/real/*.parquet
+experiments/data/real/*.zip
+experiments/data/real/*.jsonl
+experiments/data/real/daily/*
+!experiments/data/real/daily/README.md
+experiments/data/real/source_c/jobs_c.csv
+experiments/data/real/source_c/raw_c.jsonl
+experiments/data/real/source_c/attempted_c.jsonl
+experiments/data/real/source_c/.chrome-*/
+evidence/site_probe/
+
+# 论文正文与打包产物（不公开）
+*.docx
+*.pdf
+*.pptx
+*.xlsx
+*.zip
+*.pdb
+
+# 系统
+.DS_Store
+Thumbs.db

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% macro cell(v) -%}
+  {%- if v -%}
+    {%- for line in v.split('\n') -%}
+      {%- if line.startswith('http') -%}<a href="{{ line }}" target="_blank" rel="noopener" title="{{ line }}">{{ line }}</a>
+      {%- else -%}{{ line }}{%- endif -%}{%- if not loop.last -%}<br>{%- endif -%}
+    {%- endfor -%}
+  {%- else -%}-{%- endif -%}
+{%- endmacro %}
+{% block title %}管理员后台{% endblock %}
+{% block content %}
+<div class="card"><h2>管理员后台</h2>
+  <p class="hint">仅管理员角色可见。用户管理、角色变更与启停用操作均写入操作日志；所有查询走参数化 SQL。
+  <a href="/admin/db">查看关系库服务端状态 →</a>　<a href="/sources">数据源总览 →</a></p>
+</div>
+<div class="card" style="border-left:4px solid #C0392B">
+  <h2>数据源 C · 实时采集库状态（独立于 12 张结果表）</h2>
+  <p class="hint">采集库 <b>{{ c.backend }}</b>，{{ c.crawl_date }} 采集，去重岗位
+  <b>{{ '{:,}'.format(c.total) }}</b> 条；平台：{% for s in c.sites %}{{ s.name }} {{ s.n }} 条{% if not loop.last %} / {% endif %}{% endfor %}；
+  检索词 {{ c.keywords }} 组（命中 {{ c.keywords_hit }} 组），发布跨度 {{ c.date_span }}，月薪中位数 {{ c.salary_median }}k；
+  Spark SQL 与 pandas 技能词频{{ '一致' if c.spark_consistent else '存在差异' }}。
+  <a href="/jobs">进入实时岗位检索 →</a></p>
+</div>
+<div class="grid2">
+  <div class="card"><h2>用户管理</h2>
+    <table><thead><tr><th>ID</th><th>用户名</th><th>邮箱</th><th>角色</th><th>状态</th><th>注册时间</th><th>最后登录</th><th>操作</th></tr></thead>
+    <tbody>{% for u in users %}<tr>
+      <td>{{ u['id'] }}</td><td><b>{{ u['username'] }}</b></td><td>{{ u['email'] or '-' }}</td>
+      <td><span class="tag {{ u['role'] }}">{{ '管理员' if u['role']=='admin' else '普通用户' }}</span></td>
+      <td><span class="tag {{ 'off' if u['status']!=1 else 'admin' }}">{{ '停用' if u['status']!=1 else '启用' }}</span></td>
+      <td>{{ u['created_at'] }}</td><td>{{ u['last_login'] or '-' }}</td>
+      <td>{% if u['username']!='admin' %}
+        <form method="post" action="/admin/user/{{ u['id'] }}/toggle" style="display:inline"><button class="btn ghost small">启/停</button></form>
+        <form method="post" action="/admin/user/{{ u['id'] }}/role" style="display:inline"><button class="btn ghost small">角色</button></form>
+      {% else %}<span class="hint">内置</span>{% endif %}</td>
+    </tr>{% endfor %}</tbody></table>
+  </div>
+  <div class="card"><h2>结果库数据表行数（E1–E6）</h2>
+    <table><thead><tr><th>结果表</th><th>行数</th></tr></thead>
+    <tbody>{% for t, n in counts.items() %}<tr><td>{{ t }}</td><td class="num">{{ '{:,}'.format(n) }}</td></tr>{% endfor %}</tbody></table>
+    <h3 style="margin-top:16px">数据源元信息（三源并列）</h3>
+    <table><thead><tr><th>项</th><th>A · Kaggle</th><th>B · HF</th><th>C · 实时爬虫</th></tr></thead>
+    <tbody>{% for s in sources %}{% if s['source_a'] or s['source_b'] or c_meta.get(s['item']) %}<tr>
+      <td>{{ s['item'] }}</td>
+      <td class="srccell">{{ cell(s['source_a'] or '') }}</td>
+      <td class="srccell">{{ cell(s['source_b'] or '') }}</td>
+      <td class="srccell">{{ cell(c_meta.get(s['item'], '')) }}</td>
+    </tr>{% endif %}{% endfor %}</tbody></table>
+  </div>
+</div>
+<div class="card"><h2>操作日志（最近 20 条）</h2>
+  <table><thead><tr><th>时间</th><th>用户</th><th>动作</th><th>详情</th><th>IP</th></tr></thead>
+  <tbody>{% for l in logs %}<tr><td>{{ l['created_at'] }}</td><td>{{ l['username'] }}</td>
+    <td>{{ l['action'] }}</td><td>{{ l['detail'] or '-' }}</td><td>{{ l['ip'] }}</td></tr>{% endfor %}</tbody></table>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+关系库后端,采集库,表名,导入行数,库内校验行数,导入时间
+SQLite,data/source_c.db,jobs_c,2001,2001,2026-11-15 19:23:59
+SQLite,data/source_c.db,skill_freq_c,20,20,2026-11-15 19:23:59
+SQLite,data/source_c.db,source_c_meta,23,23,2026-11-15 19:23:59
+MySQL 8.0.46,thesis_crawl,jobs_c,2001,2001,2026-11-15 19:23:59
+MySQL 8.0.46,thesis_crawl,skill_freq_c,20,20,2026-11-15 19:23:59
+MySQL 8.0.46,thesis_crawl,source_c_meta,23,23,2026-11-15 19:23:59

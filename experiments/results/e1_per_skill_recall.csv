@@ -1,0 +1,36 @@
+技能类别,金标准岗位数,M2 预测岗位数,召回率
+Accounting/Auditing,19,26,1.3684
+Administrative,17,45,2.6471
+Advertising,3,6,2.0
+Analyst,17,19,1.1176
+Art/Creative,4,5,1.25
+Business Development,50,18,0.36
+Consulting,8,16,2.0
+Customer Service,15,78,5.2
+Design,6,56,9.3333
+Distribution,3,26,8.6667
+Education,4,122,30.5
+Engineering,45,57,1.2667
+Finance,27,18,0.6667
+General Business,7,1,0.1429
+Health Care Provider,83,90,1.0843
+Human Resources,9,15,1.6667
+Information Technology,102,10,0.098
+Legal,10,20,2.0
+Management,86,201,2.3372
+Manufacturing,77,24,0.3117
+Marketing,20,36,1.8
+Other,42,0,0.0
+Product Management,5,6,1.2
+Production,5,39,7.8
+Project Management,22,30,1.3636
+Public Relations,4,3,0.75
+Purchasing,3,4,1.3333
+Quality Assurance,3,17,5.6667
+Research,9,30,3.3333
+Sales,82,93,1.1341
+Science,5,25,5.0
+Strategy/Planning,4,15,3.75
+Supply Chain,7,14,2.0
+Training,7,106,15.1429
+Writing/Editing,5,11,2.2

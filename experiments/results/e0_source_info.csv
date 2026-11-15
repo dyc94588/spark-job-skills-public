@@ -1,0 +1,14 @@
+元信息项,数据源 A,数据源 B
+Kaggle,https://www.kaggle.com/datasets/arshkon/linkedin-job-postings,
+下载日期,2026-11-14,2026-11-14
+主表,"postings.csv（123,849 条）",
+作者,Arsh Koneru (arshkon),ryang2
+名称,LinkedIn Job Postings (2023–2024),linkedin-job-scrape（日级抓取快照）
+地址,,https://hf-mirror.com/datasets/ryang2/linkedin-job-scrape
+文件,,538 个日分区 parquet，514 个唯一日期
+映射表,mappings/skills.csv（35 类技能）,
+标注表,"jobs/job_skills.csv（213,768 条，覆盖 126,807 个岗位）",
+用途,E1 技能抽取评测（外部平台标注金标准）、E2 技能共现与聚类,E3 技术技能热度趋势预测、E4 Spark 多分区读取性能
+许可,CC BY-SA 4.0,OpenRAIL-M（bigscience-openrail-m，HF 数据集元数据核验，2026-11-15）
+跨度,,2023-03-09 ~ 2026-11-13
+镜像,https://hf-mirror.com/datasets/datastax/linkedin_job_listings,

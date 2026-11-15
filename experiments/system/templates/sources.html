@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}数据源总览{% endblock %}
+{% macro cell(v) -%}
+  {%- if v -%}
+    {%- for line in v.split('\n') -%}
+      {%- if line.startswith('http') -%}<a href="{{ line }}" target="_blank" rel="noopener" title="{{ line }}">{{ line }}</a>
+      {%- else -%}{{ line }}{%- endif -%}{%- if not loop.last -%}<br>{%- endif -%}
+    {%- endfor -%}
+  {%- else -%}-{%- endif -%}
+{%- endmacro %}
+{% block content %}
+<div class="card" style="border-left:4px solid #C0392B">
+  <h2>三数据源总览与口径说明</h2>
+  <p class="hint">系统同时使用三源：<b>A / B 为论文 E1–E6 主实验的历史公开数据集</b>（结果库 thesis_skill，12 张结果表）；
+  <b>C 为 2026-11-15 自建合规爬虫实时采集的中文岗位</b>（独立采集库 {{ c.backend }}，{{ '{:,}'.format(c.total) }} 条）。
+  C 源不替代主实验口径，用于回应「数据偏旧」并驱动本系统「实时岗位」模块。三源分开存放、分别标注，避免把不同口径的数值混算。</p>
+</div>
+<div class="card">
+  <h2>数据源元信息对照表</h2>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th style="width:110px">元信息项</th><th>数据源 A · Kaggle LinkedIn</th>
+      <th>数据源 B · HF 日级快照</th><th>数据源 C · 自建爬虫（实时）</th></tr></thead>
+    <tbody>{% for s in sources %}{% if s['source_a'] or s['source_b'] or c_meta.get(s['item']) %}<tr>
+      <td><b>{{ s['item'] }}</b></td>
+      <td class="srccell">{{ cell(s['source_a'] or '') }}</td>
+      <td class="srccell">{{ cell(s['source_b'] or '') }}</td>
+      <td class="srccell">{{ cell(c_meta.get(s['item'], '')) }}</td>
+    </tr>{% endif %}{% endfor %}</tbody>
+  </table></div>
+</div>
+<div class="grid2">
+  <div class="card"><h2>数据源 C · 采集与系统接入</h2>
+    <table><tbody>
+      <tr><td>采集日期</td><td>{{ c.crawl_date }}</td></tr>
+      <tr><td>去重岗位数</td><td class="num">{{ '{:,}'.format(c.total) }}</td></tr>
+      <tr><td>平台分布</td><td>{% for s in c.sites %}{{ s.name }} {{ s.n }} 条{% if not loop.last %} · {% endif %}{% endfor %}</td></tr>
+      <tr><td>发布时间跨度</td><td>{{ c.date_span }}</td></tr>
+      <tr><td>月薪中位数</td><td>{{ c.salary_median }} k</td></tr>
+      <tr><td>技能词典</td><td>{{ c.skill_cnt }} 类规范名（中文技术技能）</td></tr>
+      <tr><td>Spark SQL 校验</td><td>{{ '与 pandas 词频完全一致' if c.spark_consistent else '存在差异，见 E7 结果表' }}</td></tr>
+      <tr><td>采集库</td><td>{{ c.backend }}</td></tr>
+      <tr><td>采集库表</td><td>jobs_c / skill_freq_c / source_c_meta</td></tr>
+      <tr><td>系统入口</td><td><a href="/jobs">/jobs 实时岗位检索</a> · <a href="/export/jobs">CSV 导出</a> · <a href="/api/source_c/overview">REST 接口</a></td></tr>
+    </tbody></table>
+  </div>
+  <div class="card"><h2>合规声明与边界</h2>
+    <p class="hint" style="line-height:1.9">
+    1. 仅采集公开发布的岗位列表信息（职位名、薪资、城市、经验学历、公司、技能标签），不含个人隐私字段；<br>
+    2. 不登录、不绕过验证码或风控：BOSS直聘（需登录）、智联招聘（EdgeOne 人机验证）、拉勾网（WAF 滑块）经实测不可无登录采集，<b>已如实放弃</b>；<br>
+    3. 逐页限速 3.5~15 秒、失败退避、连续 3 组空结果主动停站，猎聘频控后停止采集，未做任何绕过；<br>
+    4. 猎聘 robots.txt 仅禁止 /user/ 路径，本采集不涉及；<br>
+    5. 仅用于本科毕业设计学术研究，不用于商业用途，不二次分发原始数据；<br>
+    6. C 源技能词表为中文自建词典，与 A 源 LinkedIn 35 类体系口径不同，<b>不与 E1–E6 数值直接对比</b>。
+    </p>
+    <p class="hint">完整溯源见交付包 <code>06_数据溯源/PROVENANCE_C.md</code>；A/B 源溯源见 <code>PROVENANCE.md</code>。</p>
+  </div>
+</div>
+<div class="card"><h2>各源在系统中的作用</h2>
+  <table><thead><tr><th>数据源</th><th>时间</th><th>承担实验</th><th>系统模块</th></tr></thead>
+  <tbody>
+    <tr><td>A · Kaggle LinkedIn Job Postings</td><td>2023—2024 快照</td><td>E1 技能抽取评测、E2 共现与聚类</td><td>实验数据筛选 / 抽取评估 / 共现规则 / 簇画像</td></tr>
+    <tr><td>B · HF 日级抓取快照</td><td>36 个有效观测月</td><td>E3 趋势预测、E4 Spark 性能</td><td>技能热度趋势 / 模型对比 / 滚动预测明细</td></tr>
+    <tr><td><b>C · 猎聘 + 前程无忧自建爬虫</b></td><td><b>2026-11-15 采集</b></td><td>E7 时效性与跨平台迁移验证</td><td><b>首页实时看板 / 实时岗位检索 / 数据源总览</b></td></tr>
+  </tbody></table>
+</div>
+{% endblock %}

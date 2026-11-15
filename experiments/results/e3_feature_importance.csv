@@ -1,0 +1,14 @@
+特征,重要性
+roll_std_3,541.0
+cooc_strength,331.0
+lag_0,295.0
+lag_12,278.0
+lag_1,209.0
+lag_6,197.0
+roll_mean_3,184.0
+month_sin,170.0
+lag_3,169.0
+roll_mean_6,161.0
+volume_z,132.0
+metro_ratio,68.0
+month_cos,65.0

@@ -1,0 +1,301 @@
+job_id,错误类型,技能
+3868010733,平台标注未体现在 JD 文本中,Business Development
+3868010733,文本命中但平台未标注（FP）,Customer Service
+3868010733,文本命中但平台未标注（FP）,Management
+3884427833,文本命中但平台未标注（FP）,Management
+3884432471,平台标注未体现在 JD 文本中,Information Technology
+3884432471,文本命中但平台未标注（FP）,Project Management
+3884434973,平台标注未体现在 JD 文本中,Information Technology
+3884434973,文本命中但平台未标注（FP）,Science
+3884434973,文本命中但平台未标注（FP）,Management
+3884435901,文本命中但平台未标注（FP）,Writing/Editing
+3884435901,文本命中但平台未标注（FP）,Training
+3884436863,平台标注未体现在 JD 文本中,Information Technology
+3884436863,文本命中但平台未标注（FP）,Sales
+3884436863,文本命中但平台未标注（FP）,Analyst
+3884436863,文本命中但平台未标注（FP）,Engineering
+3884436886,平台标注未体现在 JD 文本中,Business Development
+3884436886,文本命中但平台未标注（FP）,Marketing
+3884436886,文本命中但平台未标注（FP）,Training
+3884440410,不可观测类别（Other）,Other
+3884440410,文本命中但平台未标注（FP）,Education
+3884440410,文本命中但平台未标注（FP）,Management
+3884440410,文本命中但平台未标注（FP）,Strategy/Planning
+3884443636,文本命中但平台未标注（FP）,Management
+3884443636,文本命中但平台未标注（FP）,Quality Assurance
+3884446791,平台标注未体现在 JD 文本中,Manufacturing
+3884446791,文本命中但平台未标注（FP）,Customer Service
+3884805170,别名已覆盖但置信度未进 Top-K,Art/Creative
+3884805170,平台标注未体现在 JD 文本中,Information Technology
+3884805170,文本命中但平台未标注（FP）,Product Management
+3884805170,文本命中但平台未标注（FP）,Management
+3884808462,不可观测类别（Other）,Other
+3884808462,文本命中但平台未标注（FP）,Customer Service
+3884808462,文本命中但平台未标注（FP）,Education
+3884808462,文本命中但平台未标注（FP）,Training
+3884810267,文本命中但平台未标注（FP）,Advertising
+3884811146,不可观测类别（Other）,Other
+3884811146,文本命中但平台未标注（FP）,Customer Service
+3884811146,文本命中但平台未标注（FP）,Education
+3884811146,文本命中但平台未标注（FP）,Training
+3884820732,平台标注未体现在 JD 文本中,Information Technology
+3884820732,文本命中但平台未标注（FP）,Design
+3884820732,文本命中但平台未标注（FP）,Production
+3884824105,隐式表达漏抽/权重不足,Information Technology
+3884824105,文本命中但平台未标注（FP）,Customer Service
+3884824105,文本命中但平台未标注（FP）,Management
+3884824105,文本命中但平台未标注（FP）,Training
+3884825558,平台标注未体现在 JD 文本中,Customer Service
+3884825558,平台标注未体现在 JD 文本中,Analyst
+3884825558,文本命中但平台未标注（FP）,Education
+3884825558,文本命中但平台未标注（FP）,Management
+3884833401,平台标注未体现在 JD 文本中,Information Technology
+3884844549,不可观测类别（Other）,Other
+3884844549,文本命中但平台未标注（FP）,Sales
+3884844549,文本命中但平台未标注（FP）,Distribution
+3884844549,文本命中但平台未标注（FP）,Management
+3884855085,不可观测类别（Other）,Other
+3884855085,平台标注未体现在 JD 文本中,Information Technology
+3884855085,文本命中但平台未标注（FP）,Training
+3884855085,文本命中但平台未标注（FP）,Quality Assurance
+3884857233,平台标注未体现在 JD 文本中,Manufacturing
+3884857233,文本命中但平台未标注（FP）,Project Management
+3884857233,文本命中但平台未标注（FP）,Design
+3884932296,文本命中但平台未标注（FP）,Education
+3884932296,文本命中但平台未标注（FP）,Training
+3885102457,平台标注未体现在 JD 文本中,Sales
+3885102457,平台标注未体现在 JD 文本中,Marketing
+3885102457,文本命中但平台未标注（FP）,Administrative
+3885102457,文本命中但平台未标注（FP）,Management
+3885102457,文本命中但平台未标注（FP）,Research
+3885104439,文本命中但平台未标注（FP）,Education
+3885104439,文本命中但平台未标注（FP）,Management
+3885107981,文本命中但平台未标注（FP）,Education
+3885107981,文本命中但平台未标注（FP）,Training
+3885109056,文本命中但平台未标注（FP）,Accounting/Auditing
+3885109056,文本命中但平台未标注（FP）,Finance
+3885112179,平台标注未体现在 JD 文本中,Analyst
+3885112179,文本命中但平台未标注（FP）,Management
+3885112328,平台标注未体现在 JD 文本中,Manufacturing
+3885112328,平台标注未体现在 JD 文本中,Management
+3885112328,文本命中但平台未标注（FP）,Customer Service
+3885112328,文本命中但平台未标注（FP）,Science
+3885112328,文本命中但平台未标注（FP）,Training
+3885814302,平台标注未体现在 JD 文本中,Manufacturing
+3885814302,文本命中但平台未标注（FP）,Education
+3885814302,文本命中但平台未标注（FP）,Engineering
+3885821892,文本命中但平台未标注（FP）,Project Management
+3885821892,文本命中但平台未标注（FP）,Management
+3885830909,文本命中但平台未标注（FP）,Administrative
+3885830909,文本命中但平台未标注（FP）,Education
+3885835073,文本命中但平台未标注（FP）,Human Resources
+3885844759,平台标注未体现在 JD 文本中,Information Technology
+3885844759,文本命中但平台未标注（FP）,Design
+3885844759,文本命中但平台未标注（FP）,Management
+3886442607,不可观测类别（Other）,Other
+3886442607,文本命中但平台未标注（FP）,Customer Service
+3886442607,文本命中但平台未标注（FP）,Distribution
+3886442607,文本命中但平台未标注（FP）,Management
+3886838081,平台标注未体现在 JD 文本中,Manufacturing
+3886838081,文本命中但平台未标注（FP）,Administrative
+3886838081,文本命中但平台未标注（FP）,Education
+3886862673,平台标注未体现在 JD 文本中,Health Care Provider
+3886862673,文本命中但平台未标注（FP）,Design
+3886879297,别名已覆盖但置信度未进 Top-K,Manufacturing
+3886879297,别名已覆盖但置信度未进 Top-K,Management
+3886879297,文本命中但平台未标注（FP）,Science
+3886879297,文本命中但平台未标注（FP）,Legal
+3886879297,文本命中但平台未标注（FP）,Engineering
+3886883261,平台标注未体现在 JD 文本中,Administrative
+3886883261,平台标注未体现在 JD 文本中,Analyst
+3886883261,文本命中但平台未标注（FP）,Design
+3886883261,文本命中但平台未标注（FP）,Legal
+3886883261,文本命中但平台未标注（FP）,Management
+3886896782,平台标注未体现在 JD 文本中,Information Technology
+3886896782,文本命中但平台未标注（FP）,Administrative
+3886896782,文本命中但平台未标注（FP）,Management
+3886897862,平台标注未体现在 JD 文本中,Accounting/Auditing
+3886897862,文本命中但平台未标注（FP）,Management
+3887473578,别名已覆盖但置信度未进 Top-K,Consulting
+3887473578,平台标注未体现在 JD 文本中,Information Technology
+3887473578,平台标注未体现在 JD 文本中,Engineering
+3887473578,文本命中但平台未标注（FP）,Project Management
+3887473578,文本命中但平台未标注（FP）,Accounting/Auditing
+3887473578,文本命中但平台未标注（FP）,Management
+3887482414,平台标注未体现在 JD 文本中,Marketing
+3887482414,文本命中但平台未标注（FP）,Management
+3887482414,文本命中但平台未标注（FP）,Training
+3887496601,别名已覆盖但置信度未进 Top-K,Business Development
+3887496601,文本命中但平台未标注（FP）,Customer Service
+3887496601,文本命中但平台未标注（FP）,Training
+3887575321,平台标注未体现在 JD 文本中,Information Technology
+3887575321,文本命中但平台未标注（FP）,Administrative
+3887575321,文本命中但平台未标注（FP）,Management
+3887578206,平台标注未体现在 JD 文本中,Information Technology
+3887578206,文本命中但平台未标注（FP）,Sales
+3887578206,文本命中但平台未标注（FP）,Management
+3887700101,平台标注未体现在 JD 文本中,Manufacturing
+3887700101,文本命中但平台未标注（FP）,Customer Service
+3887700101,文本命中但平台未标注（FP）,Sales
+3887700479,别名已覆盖但置信度未进 Top-K,Business Development
+3887700479,文本命中但平台未标注（FP）,Customer Service
+3887700479,文本命中但平台未标注（FP）,Training
+3887706764,平台标注未体现在 JD 文本中,Information Technology
+3887706764,文本命中但平台未标注（FP）,Management
+3887706764,文本命中但平台未标注（FP）,Marketing
+3887706764,文本命中但平台未标注（FP）,Engineering
+3887713580,不可观测类别（Other）,Other
+3887713580,文本命中但平台未标注（FP）,Project Management
+3887713580,文本命中但平台未标注（FP）,Management
+3887714313,文本命中但平台未标注（FP）,Supply Chain
+3887717063,不可观测类别（Other）,Other
+3887717063,文本命中但平台未标注（FP）,Education
+3887717063,文本命中但平台未标注（FP）,Training
+3887717063,文本命中但平台未标注（FP）,Management
+3887717078,平台标注未体现在 JD 文本中,General Business
+3887717078,文本命中但平台未标注（FP）,Engineering
+3887717078,文本命中但平台未标注（FP）,Design
+3887717078,文本命中但平台未标注（FP）,Management
+3887835977,文本命中但平台未标注（FP）,Customer Service
+3887835977,文本命中但平台未标注（FP）,Public Relations
+3887835979,文本命中但平台未标注（FP）,Customer Service
+3887835979,文本命中但平台未标注（FP）,Public Relations
+3887836978,文本命中但平台未标注（FP）,Customer Service
+3887839202,文本命中但平台未标注（FP）,Customer Service
+3887839202,文本命中但平台未标注（FP）,Public Relations
+3887862150,平台标注未体现在 JD 文本中,Business Development
+3887862150,文本命中但平台未标注（FP）,Manufacturing
+3887862150,文本命中但平台未标注（FP）,Distribution
+3887879374,平台标注未体现在 JD 文本中,Manufacturing
+3887879374,平台标注未体现在 JD 文本中,Management
+3887879374,文本命中但平台未标注（FP）,Education
+3887880290,平台标注未体现在 JD 文本中,Finance
+3887880290,文本命中但平台未标注（FP）,Marketing
+3887880290,文本命中但平台未标注（FP）,Business Development
+3887881555,别名已覆盖但置信度未进 Top-K,Information Technology
+3887881555,平台标注未体现在 JD 文本中,Engineering
+3887881555,文本命中但平台未标注（FP）,Sales
+3887881555,文本命中但平台未标注（FP）,Management
+3887881555,文本命中但平台未标注（FP）,Strategy/Planning
+3887887112,文本命中但平台未标注（FP）,Education
+3887887112,文本命中但平台未标注（FP）,Management
+3887912097,文本命中但平台未标注（FP）,Customer Service
+3887912097,文本命中但平台未标注（FP）,Management
+3887937947,别名已覆盖但置信度未进 Top-K,Business Development
+3887937947,文本命中但平台未标注（FP）,Education
+3887937947,文本命中但平台未标注（FP）,Distribution
+3887939358,平台标注未体现在 JD 文本中,Information Technology
+3887939358,别名已覆盖但置信度未进 Top-K,Engineering
+3887939358,文本命中但平台未标注（FP）,Sales
+3887939358,文本命中但平台未标注（FP）,Education
+3887939358,文本命中但平台未标注（FP）,Design
+3887956332,平台标注未体现在 JD 文本中,Sales
+3887956332,平台标注未体现在 JD 文本中,Business Development
+3887956332,文本命中但平台未标注（FP）,Customer Service
+3887956332,文本命中但平台未标注（FP）,Information Technology
+3887997108,平台标注未体现在 JD 文本中,Health Care Provider
+3887997108,文本命中但平台未标注（FP）,Education
+3887997678,平台标注未体现在 JD 文本中,Business Development
+3887997678,文本命中但平台未标注（FP）,Education
+3887997678,文本命中但平台未标注（FP）,Distribution
+3888010944,平台标注未体现在 JD 文本中,Administrative
+3888010944,文本命中但平台未标注（FP）,Production
+3888011673,文本命中但平台未标注（FP）,Customer Service
+3888011673,文本命中但平台未标注（FP）,Management
+3888026515,文本命中但平台未标注（FP）,Training
+3888401963,平台标注未体现在 JD 文本中,Information Technology
+3888401963,文本命中但平台未标注（FP）,Manufacturing
+3888401963,文本命中但平台未标注（FP）,Management
+3888932995,平台标注未体现在 JD 文本中,Manufacturing
+3888932995,平台标注未体现在 JD 文本中,Management
+3888932995,文本命中但平台未标注（FP）,Engineering
+3888932995,文本命中但平台未标注（FP）,Design
+3888932995,文本命中但平台未标注（FP）,Training
+3888946543,平台标注未体现在 JD 文本中,Sales
+3888946543,平台标注未体现在 JD 文本中,Finance
+3888946543,文本命中但平台未标注（FP）,Customer Service
+3888946543,文本命中但平台未标注（FP）,Human Resources
+3888946543,文本命中但平台未标注（FP）,Education
+3888949113,平台标注未体现在 JD 文本中,Information Technology
+3888949113,文本命中但平台未标注（FP）,Education
+3888949113,文本命中但平台未标注（FP）,Writing/Editing
+3888949320,平台标注未体现在 JD 文本中,Marketing
+3888949320,文本命中但平台未标注（FP）,Project Management
+3888949320,文本命中但平台未标注（FP）,Management
+3888975633,文本命中但平台未标注（FP）,Research
+3889029399,平台标注未体现在 JD 文本中,Sales
+3889029399,文本命中但平台未标注（FP）,Research
+3889029399,文本命中但平台未标注（FP）,Strategy/Planning
+3889104217,平台标注未体现在 JD 文本中,Information Technology
+3889104217,文本命中但平台未标注（FP）,Project Management
+3889104217,文本命中但平台未标注（FP）,Consulting
+3889104217,文本命中但平台未标注（FP）,Management
+3889125060,文本命中但平台未标注（FP）,Management
+3889128708,文本命中但平台未标注（FP）,Education
+3889128708,文本命中但平台未标注（FP）,Management
+3889129378,文本命中但平台未标注（FP）,Research
+3889243404,别名已覆盖但置信度未进 Top-K,Business Development
+3889243404,文本命中但平台未标注（FP）,Consulting
+3889243404,文本命中但平台未标注（FP）,Marketing
+3889416412,平台标注未体现在 JD 文本中,Analyst
+3889416412,文本命中但平台未标注（FP）,Accounting/Auditing
+3889416412,文本命中但平台未标注（FP）,Management
+3889416412,文本命中但平台未标注（FP）,Finance
+3889422648,文本命中但平台未标注（FP）,Customer Service
+3889422648,文本命中但平台未标注（FP）,Education
+3889467578,平台标注未体现在 JD 文本中,Information Technology
+3889467578,文本命中但平台未标注（FP）,Management
+3889467578,文本命中但平台未标注（FP）,Marketing
+3889467578,文本命中但平台未标注（FP）,Accounting/Auditing
+3889703926,平台标注未体现在 JD 文本中,Manufacturing
+3889703926,平台标注未体现在 JD 文本中,Engineering
+3889703926,文本命中但平台未标注（FP）,Administrative
+3889703926,文本命中但平台未标注（FP）,Management
+3889703926,文本命中但平台未标注（FP）,Supply Chain
+3889745110,平台标注未体现在 JD 文本中,Information Technology
+3889745110,文本命中但平台未标注（FP）,Project Management
+3889745110,文本命中但平台未标注（FP）,Design
+3889745110,文本命中但平台未标注（FP）,Engineering
+3889759606,平台标注未体现在 JD 文本中,General Business
+3889759606,文本命中但平台未标注（FP）,Consulting
+3890892420,平台标注未体现在 JD 文本中,Training
+3890892420,文本命中但平台未标注（FP）,Administrative
+3890892420,文本命中但平台未标注（FP）,Research
+3890896058,文本命中但平台未标注（FP）,Sales
+3890896058,文本命中但平台未标注（FP）,Advertising
+3891016432,文本命中但平台未标注（FP）,Education
+3891051543,平台标注未体现在 JD 文本中,Accounting/Auditing
+3891051543,文本命中但平台未标注（FP）,Manufacturing
+3891051543,文本命中但平台未标注（FP）,Legal
+3891051543,文本命中但平台未标注（FP）,Management
+3891074049,平台标注未体现在 JD 文本中,Sales
+3891074049,平台标注未体现在 JD 文本中,Business Development
+3891074049,文本命中但平台未标注（FP）,Analyst
+3891074049,文本命中但平台未标注（FP）,Design
+3891074049,文本命中但平台未标注（FP）,Management
+3891074975,平台标注未体现在 JD 文本中,Project Management
+3891074975,平台标注未体现在 JD 文本中,Public Relations
+3891074975,文本命中但平台未标注（FP）,Marketing
+3891074975,文本命中但平台未标注（FP）,Management
+3891076197,文本命中但平台未标注（FP）,Marketing
+3891076197,文本命中但平台未标注（FP）,Business Development
+3891076226,文本命中但平台未标注（FP）,Education
+3891076226,文本命中但平台未标注（FP）,Business Development
+3891077129,文本命中但平台未标注（FP）,Management
+3891078363,平台标注未体现在 JD 文本中,Manufacturing
+3891078363,文本命中但平台未标注（FP）,Design
+3891078363,文本命中但平台未标注（FP）,Health Care Provider
+3891080164,文本命中但平台未标注（FP）,Education
+3891080164,文本命中但平台未标注（FP）,Design
+3891251805,别名已覆盖但置信度未进 Top-K,Supply Chain
+3891251805,文本命中但平台未标注（FP）,Production
+3891251805,文本命中但平台未标注（FP）,Engineering
+3891254159,平台标注未体现在 JD 文本中,Business Development
+3891254159,文本命中但平台未标注（FP）,Design
+3891254159,文本命中但平台未标注（FP）,Management
+3891256053,文本命中但平台未标注（FP）,Management
+3891256053,文本命中但平台未标注（FP）,Finance
+3891256398,别名已覆盖但置信度未进 Top-K,Business Development
+3891256398,文本命中但平台未标注（FP）,Education
+3891256398,文本命中但平台未标注（FP）,Training
+3891257109,平台标注未体现在 JD 文本中,Business Development

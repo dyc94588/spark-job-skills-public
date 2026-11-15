@@ -1,0 +1,5 @@
+测试项,操作,预期结果,实测结果,是否通过
+InnoDB 事务回滚,START TRANSACTION → INSERT → ROLLBACK,临时写入不落地，行数回到原值,写入前 7 行，事务内 8 行，回滚后 7 行,通过
+只读账号最小权限,thesis_ro 执行 SELECT 与 INSERT,SELECT 允许、INSERT 被服务端拒绝,SELECT 返回 432 行；INSERT 被拒绝（错误码 1142）,通过
+参数化查询抗注入,"把 ""' OR 1=1 -- "" 作为 skill 参数传入",按字面值匹配，返回 0 行而非全表,返回 0 行，全表共 432 行,通过
+口令哈希存储,读取 users 表 admin 的 password_hash,非明文且带算法标识,哈希前缀 scrypt，长度 162，库中不含明文口令,通过

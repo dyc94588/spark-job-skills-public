@@ -1,0 +1,3 @@
+实现方式,分区文件数,读入行数,月度分组数,耗时(s),峰值内存(MB),备注,加速比(pandas/Spark)
+pandas 单进程（538 文件）,538,169945,36,0.694,141.2,逐文件 read_parquet + concat,1.0
+Spark local[*]（合并文件）,538,169945,36,2.361,151.5,单次 groupBy action；Windows Hadoop glob 限制见 5.8,0.2939

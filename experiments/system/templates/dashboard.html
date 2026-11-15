@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}数据看板{% endblock %}
+{% block content %}
+<div class="card" style="border-left:4px solid #C0392B">
+  <h2>数据源 C · 实时采集岗位（默认展示）</h2>
+  {% if c.total <= 3 %}<p class="hint" style="color:#8B5E00">公开仓库演示提示：本仓库不分发原始采集数据，当前采集库由 <code>jobs_c.example.csv</code> 的 3 条虚构示例自动构建；完整 2,001 条统计结果见 <code>experiments/results/e7_*.csv</code> 与 <code>NOTICE.md</code>。</p>{% endif %}
+  <p class="hint">本区块数据来自 <b>2026-11-15 自建合规爬虫</b>：猎聘与前程无忧公开发布的岗位列表，
+  去重后 {{ '{:,}'.format(c.total) }} 条，已写入独立采集库 <b>{{ c.backend }}</b>。
+  与 A/B 源（2023—2024 LinkedIn 历史快照）分开存放，用于回应数据时效性问题。
+  <a href="/jobs">检索 / 筛选实时岗位 →</a>　<a href="/sources">查看三源与合规声明 →</a></p>
+</div>
+<div class="kpis">
+  <div class="kpi"><b>{{ '{:,}'.format(c.total) }}</b><span>C 源去重岗位数（2026-11-15 采集）</span></div>
+  <div class="kpi"><b>{{ c.sites|length }}</b><span>中文主流招聘平台（猎聘 953 / 前程无忧 1,048）</span></div>
+  <div class="kpi"><b>{{ c.keywords }}</b><span>检索词组数（样本命中 {{ c.keywords_hit }} 组）</span></div>
+  <div class="kpi"><b>{{ c.salary_median }}k</b><span>月薪中位数（{{ '{:,}'.format(c.salary_covered) }} 条有薪资岗位）</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><h2>图 C-1　实时岗位技能热度 Top 10（E7 词典匹配）</h2><div id="c5" class="chart"></div></div>
+  <div class="card"><h2>图 C-2　实时岗位城市分布 Top 10（采集端地区标签）</h2><p class="hint">仅反映站点返回的 jobArea 标签；前程无忧 1,037 条为访问端默认地区「佛山」（占该站 98.95%），不代表岗位真实工作地，详见论文 5.9 节。错位字段已清洗。</p><div id="c6" class="chart"></div></div>
+</div>
+<div class="card"><h2>图 C-3　前程无忧岗位发布时间月度分布（51job 精确时间戳）</h2><div id="c7" class="chart" style="height:200px"></div></div>
+<div class="card"><h2>A/B 主实验基准（E1–E6 结果库，保留对照）</h2>
+  <p class="hint">下方四图由 Flask 读取 <b>thesis_skill 结果库</b>渲染：技能热度来自数据源 B 的 36 个月月度序列，
+  规则与模型指标来自 E2 / E3 实测结果。该部分对应论文 5.2–5.6 节，不因接入 C 源而改动。
+  <a href="/explore">进入 E1–E6 实验数据筛选 →</a></p>
+</div>
+<div class="grid2">
+  <div class="card"><h2>图 1　技术技能热度月度趋势（B 源）</h2><div id="c1" class="chart"></div></div>
+  <div class="card"><h2>图 2　平台技能标注分布 Top 10（A 源）</h2><div id="c2" class="chart"></div></div>
+  <div class="card"><h2>图 3　预测模型 WAPE 对比（全体步长）</h2><div id="c3" class="chart"></div></div>
+  <div class="card"><h2>图 4　共现规则提升度 Top 10</h2><div id="c4" class="chart"></div></div>
+</div>
+<script src="{{ url_for('static', filename='echarts.min.js') }}"></script>
+<script>
+var months={{ months|tojson }}, series={{ series|tojson }}, cats={{ cats|tojson }},
+    models={{ models|tojson }}, rules={{ rules|tojson }},
+    cSkills={{ c_skills|tojson }}, cCities={{ c_cities|tojson }}, cMonths={{ c_months|tojson }};
+var axis={axisLine:{lineStyle:{color:'#94A3B8'}},axisLabel:{color:'#475569',fontSize:11},
+          splitLine:{lineStyle:{color:'#EEF2F7'}}};
+var names=Object.keys(series);
+echarts.init(document.getElementById('c1')).setOption({
+  tooltip:{trigger:'axis'},legend:{type:'scroll',top:0,textStyle:{fontSize:11}},
+  grid:{left:48,right:16,top:38,bottom:52},
+  xAxis:Object.assign({type:'category',data:months,boundaryGap:false},axis),
+  yAxis:Object.assign({type:'value',name:'热度'},axis),
+  series:names.map(function(n,i){return {name:n,type:'line',smooth:true,showSymbol:false,
+    lineStyle:{width:1.6},data:series[n]};})
+});
+echarts.init(document.getElementById('c2')).setOption({
+  tooltip:{trigger:'axis'},grid:{left:110,right:22,top:14,bottom:30},
+  xAxis:Object.assign({type:'value'},axis),
+  yAxis:Object.assign({type:'category',data:cats.map(function(r){return r[0];}).reverse()},axis),
+  series:[{type:'bar',itemStyle:{color:'#2F6DB5'},data:cats.map(function(r){return r[1];}).reverse()}]
+});
+echarts.init(document.getElementById('c3')).setOption({
+  tooltip:{trigger:'axis'},grid:{left:52,right:18,top:20,bottom:56},
+  xAxis:Object.assign({type:'category',data:models.map(function(r){return r[0];}),
+    axisLabel:{color:'#475569',fontSize:10,interval:0,rotate:28}},axis),
+  yAxis:Object.assign({type:'value',name:'WAPE'},axis),
+  series:[{type:'bar',itemStyle:{color:'#1D9E75'},
+    data:models.map(function(r){return r[1];})}]
+});
+echarts.init(document.getElementById('c4')).setOption({
+  tooltip:{trigger:'axis'},grid:{left:180,right:30,top:14,bottom:30},
+  xAxis:Object.assign({type:'value'},axis),
+  yAxis:Object.assign({type:'category',data:rules.map(function(r){return r[0];}).reverse()},axis),
+  series:[{type:'bar',itemStyle:{color:'#BA7517'},
+    data:rules.map(function(r){return r[1];}).reverse()}]
+});
+/* ---- 数据源 C 实时图表 ---- */
+echarts.init(document.getElementById('c5')).setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},
+    formatter:function(p){var d=cSkills.slice().reverse()[p[0].dataIndex];
+      return d.skill+'<br/>提及岗位 '+d.freq+' 条（'+(d.share*100).toFixed(2)+'%）';}},
+  grid:{left:112,right:52,top:12,bottom:28},
+  xAxis:Object.assign({type:'value',name:'岗位数'},axis),
+  yAxis:Object.assign({type:'category',
+    data:cSkills.map(function(r){return r.skill;}).reverse()},axis),
+  series:[{type:'bar',itemStyle:{color:'#C0392B'},
+    label:{show:true,position:'right',fontSize:10,color:'#475569',
+      formatter:function(p){return p.value;}},
+    data:cSkills.map(function(r){return r.freq;}).reverse()}]
+});
+echarts.init(document.getElementById('c6')).setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  grid:{left:76,right:38,top:12,bottom:28},
+  xAxis:Object.assign({type:'value',name:'岗位数'},axis),
+  yAxis:Object.assign({type:'category',
+    data:cCities.map(function(r){return r.city_n;}).reverse()},axis),
+  series:[{type:'bar',itemStyle:{color:'#2471A3'},
+    label:{show:true,position:'right',fontSize:10,color:'#475569'},
+    data:cCities.map(function(r){return r.n;}).reverse()}]
+});
+echarts.init(document.getElementById('c7')).setOption({
+  tooltip:{trigger:'axis'},grid:{left:50,right:20,top:18,bottom:44},
+  xAxis:Object.assign({type:'category',data:cMonths.map(function(r){return r.pub_month;}),
+    axisLabel:{color:'#475569',fontSize:10,rotate:40}},axis),
+  yAxis:Object.assign({type:'value',name:'岗位数'},axis),
+  series:[{type:'bar',itemStyle:{color:'#1E8449'},
+    data:cMonths.map(function(r){return r.n;})}]
+});
+</script>
+{% endblock %}

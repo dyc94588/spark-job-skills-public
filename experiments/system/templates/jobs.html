@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}实时岗位检索 · 数据源 C{% endblock %}
+{% block content %}
+<div class="card" style="border-left:4px solid #C0392B">
+  <h2>实时岗位检索 · 数据源 C（自建爬虫，{{ c.crawl_date }} 采集）</h2>
+  <p class="hint">数据来自猎聘与前程无忧公开搜索结果页，去重后 {{ '{:,}'.format(c.total) }} 条，
+  存于独立采集库 <b>{{ c.backend }}</b>；字段有效率：薪资 {{ c.meta['字段完整率-薪资'] }}、
+  城市 {{ c.meta['字段完整率-城市'] }}（错位值已清洗）、公司 {{ c.meta['字段完整率-公司'] }}。
+  猎聘未提供精确发布时间，故「发布月份」筛选仅对前程无忧样本有效。
+  <a href="/sources">数据源与合规说明 →</a></p>
+</div>
+<div class="card">
+  <h2>多条件筛选</h2>
+  <form method="get" action="/jobs" class="form-grid">
+    <div><label>招聘平台</label><select name="site"><option value="">全部平台</option>
+      {% for s in sites %}<option value="{{ s.key }}" {{ 'selected' if args.get('site')==s.key }}>{{ s.name }}（{{ s.n }}）</option>{% endfor %}
+    </select></div>
+    <div><label>城市</label><select name="city"><option value="">全部城市</option>
+      {% for x in cities %}<option value="{{ x }}" {{ 'selected' if args.get('city')==x }}>{{ x }}</option>{% endfor %}
+    </select></div>
+    <div><label>技能（词典匹配）</label><select name="skill"><option value="">全部技能</option>
+      {% for x in skill_options %}<option value="{{ x }}" {{ 'selected' if args.get('skill')==x }}>{{ x }}</option>{% endfor %}
+    </select></div>
+    <div><label>发布月份</label><select name="month"><option value="">全部月份</option>
+      {% for x in months %}<option value="{{ x }}" {{ 'selected' if args.get('month')==x }}>{{ x }}</option>{% endfor %}
+    </select></div>
+    <div><label>关键词（职位/公司/标签）</label><input type="text" name="keyword" value="{{ args.get('keyword','') }}" placeholder="如 数据开发"></div>
+    <div><label>月薪中位数下限(k)</label><input type="number" step="1" name="min_salary" value="{{ args.get('min_salary','0') }}"></div>
+    <div><label>每页条数</label><input type="number" name="page_size" value="{{ size }}"></div>
+    <div><button class="btn" type="submit">查 询</button></div>
+  </form>
+  <p class="hint" style="margin-top:10px">全部条件使用参数化 SQL 下发到采集库；关键词长度上限 60 字符。导出 CSV 需先登录。</p>
+</div>
+<div class="card">
+  <h2>筛选结果　<span class="hint">共 {{ '{:,}'.format(total) }} 条，当前第 {{ page }} 页</span></h2>
+  <div style="overflow-x:auto"><table>
+    <thead><tr><th>平台</th><th>职位名称</th><th>公司</th><th>城市</th><th>薪资</th>
+      <th>经验</th><th>学历</th><th>匹配技能</th><th>发布时间</th><th>原帖</th></tr></thead>
+    <tbody>{% for r in rows %}<tr>
+      <td><span class="tag user">{{ r.site_name }}</span></td>
+      <td><b>{{ r.title }}</b></td><td>{{ r.company or '-' }}</td><td>{{ r.city_n or '-' }}</td>
+      <td>{{ r.salary or '-' }}</td><td>{{ r.exp or '-' }}</td><td>{{ r.edu or '-' }}</td>
+      <td>{{ r.skills or '-' }}</td><td>{{ r.pub_time or '未标注' }}</td>
+      <td>{% if r.url %}<a href="{{ r.url }}" target="_blank" rel="noopener">查看</a>{% else %}-{% endif %}</td>
+    </tr>{% endfor %}</tbody>
+  </table></div>
+  {% if rows|length == 0 %}<p class="hint" style="margin-top:10px">当前条件下没有匹配岗位，请放宽筛选条件。</p>{% endif %}
+  <div class="pager">
+    {% if page > 1 %}<a class="btn ghost small" href="?{{ base_qs }}&page={{ page-1 }}">上一页</a>{% endif %}
+    {% if page * size < total %}<a class="btn ghost small" href="?{{ base_qs }}&page={{ page+1 }}">下一页</a>{% endif %}
+    <a class="btn small" href="{{ url_for('export_jobs') }}?{{ request.query_string.decode() }}">导出 CSV 报表</a>
+  </div>
+</div>
+{% endblock %}

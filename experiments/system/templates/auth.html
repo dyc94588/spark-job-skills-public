@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ '用户登录' if mode=='login' else '用户注册' }}{% endblock %}
+{% block content %}
+<div class="auth">
+  <div class="card">
+    <h2>{{ '用户登录' if mode=='login' else '新用户注册' }}</h2>
+    {% if mode=='login' %}
+    <form method="post">
+      <label>用户名</label><input type="text" name="username" required autocomplete="username">
+      <label>密码</label><input type="password" name="password" required autocomplete="current-password">
+      <button class="btn" type="submit">登 录</button>
+    </form>
+    <p class="hint">演示账号与口令见仓库根目录 <code>.env.example</code>；也可 <a href="/register">注册新账号</a>。</p>
+    {% else %}
+    <form method="post">
+      <label>用户名（3–32 字符）</label><input type="text" name="username" required>
+      <label>邮箱（选填）</label><input type="email" name="email">
+      <label>密码（不少于 6 位）</label><input type="password" name="password" required>
+      <label>确认密码</label><input type="password" name="password2" required>
+      <button class="btn" type="submit">注 册</button>
+    </form>
+    <p class="hint">新注册账号默认为普通用户，可查看看板与筛选数据；管理后台仅管理员可见。<a href="/login">已有账号？去登录</a></p>
+    {% endif %}
+  </div>
+  <div class="card">
+    <h3>数据与权限说明</h3>
+    <p class="hint">系统读取本机实测结果库（SQLite），所有数值来自真实公开数据集，未使用合成数据充当结论。注册密码经 Werkzeug PBKDF2 哈希后入库，查询全部使用参数化 SQL。</p>
+  </div>
+</div>
+{% endblock %}

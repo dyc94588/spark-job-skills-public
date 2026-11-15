@@ -1,0 +1,13 @@
+表名,字段数,导入行数,库内校验行数,导入耗时_ms
+skill_month,3,432,432,19.901
+skill_category,3,35,35,10.479
+extraction,8,4,4,10.17
+rules,7,552,552,25.015
+clusters,5,8,8,10.558
+model_compare,6,20,20,10.61
+predictions,9,360,360,22.107
+trend_monthly,6,36,36,9.896
+scalability,8,3,3,11.148
+source_info,3,13,13,7.439
+users,5,2,2,482.767
+op_logs,6,0,0,0.0

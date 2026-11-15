@@ -1,0 +1,13 @@
+序号,表名,MySQL行数,SQLite行数,是否一致,说明
+1,clusters,8,8,一致,实验结果表，两端由同一 build_frames() 导入
+2,extraction,4,4,一致,实验结果表，两端由同一 build_frames() 导入
+3,model_compare,20,20,一致,实验结果表，两端由同一 build_frames() 导入
+4,op_logs,7,0,不计入,系统运行态表（操作日志 / 用户账号），随注册与访问实时变化
+5,predictions,360,360,一致,实验结果表，两端由同一 build_frames() 导入
+6,rules,552,552,一致,实验结果表，两端由同一 build_frames() 导入
+7,scalability,3,3,一致,实验结果表，两端由同一 build_frames() 导入
+8,skill_category,35,35,一致,实验结果表，两端由同一 build_frames() 导入
+9,skill_month,432,432,一致,实验结果表，两端由同一 build_frames() 导入
+10,source_info,13,13,一致,实验结果表，两端由同一 build_frames() 导入
+11,trend_monthly,36,36,一致,实验结果表，两端由同一 build_frames() 导入
+12,users,3,2,不计入,系统运行态表（操作日志 / 用户账号），随注册与访问实时变化
