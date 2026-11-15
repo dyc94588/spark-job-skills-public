@@ -172,10 +172,10 @@ git push -u origin main
 | 分支 `main` | 已完成 ✅ |
 | `git remote add origin https://github.com/dyc94588/spark-job-skills-public.git` | 已配置 ✅ |
 | 线上空仓库 `dyc94588/spark-job-skills-public`（Public） | 已创建 ✅ |
-| `git push -u origin main` | **待双击 `push-to-github.bat`** |
+| `git push -u origin main` | **待生成 PAT 并双击 `push-to-github.bat`** |
 
-因此上面的推送命令块里，**只需执行 `git remote add origin …` 与 `git push -u origin main` 两行**；
-若通过 GitHub Connector 授权，则由 AI 直接完成这两步。
+上面的推送命令块仅作从零开始的参考；当前仓库已完成 init / 配置 / 提交，
+只需按下方「现在只差一步」完成认证并 push。
 
 ## 21:35 推送受阻诊断（已实测，避免重复踩坑）
 
@@ -187,25 +187,33 @@ git push -u origin main
 | 目标线上仓库 | 已由用户在网页创建：Public / 空 / 无 README（`git ref/heads/main` 返回 409 Empty） | 已就绪 ✅ |
 | 本机 git push（WorkBuddy 沙箱） | `CONNECT tunnel failed, response 502` / 超时 | 沙箱代理不通 GitHub ❌ |
 | 清空代理直连 | 收到 ref listing 后超时（`expected flush after ref listing`） | 直连不稳定 ❌ |
-| 本机 git 凭据 | `git credential fill` 已返回缓存凭据（值未显示） | 用户自己的终端可直接 push ✅ |
+| 本机 git 凭据 | `git credential fill` 已返回缓存凭据（值未显示） | 后经实测是旧密码，不可用 ❌ |
+| 本机终端通道 push | `Invalid username or token. Password authentication is not supported` | 旧密码 + 本机无 GCM，无法 OAuth → 需 PAT ❌ |
+| 本机终端通道（清空全部代理） | `ls-remote` EXIT=0、SSL 正常（空仓库无 refs） | 网络可用，只差有效凭据 ✅ |
 
-### 现在只差一步（2026-11-15 21:45）
+### 现在只差一步（2026-11-15 21:55）
 
 仓库已由你在网页建好：Public、空、无 README（截图确认，远端 `refs/heads/main` 返回 409 Git Repository is empty）。
-连接通道对该新仓库**没有写权限**（403），WorkBuddy 沙箱网络也连不上 GitHub，
-因此唯一路径是在**你自己的终端**推送：
+连接通道对该新仓库**没有写权限**（403）；WorkBuddy 沙箱代理到 GitHub 返回 502；
+本机终端通道网络与 SSL 正常，但缓存凭据是**旧密码**（GitHub 已不支持密码推送），
+且本机没有 Git Credential Manager，无法自动弹浏览器 OAuth 登录。
 
-**双击桌面 `push-to-github.bat`** —— remote 与本机凭据都已就绪，脚本先清空代理再执行
-`git push -u origin main`，一次推完全部 **116 个文件（含 22 张图片）与 4 个本地提交**。
-看到 `[OK] Push succeeded.` 即完成；若 `[FAIL]`，把黑窗口里的报错截图发我。
+**步骤（约 1 分钟）**：
 
-也可自己开 Git Bash：`cd /c/Users/25740/Desktop/spark-job-skills-public && git push -u origin main`。
+1. 打开 <https://github.com/settings/tokens/new> → Note 随意、Expiration 选 7 days、
+   勾选 **`repo`** → Generate token → 复制 `ghp_...`。
+2. 双击桌面 `push-to-github.bat`（内部调用 `push-github.ps1`），在黑窗口里**隐藏粘贴**令牌并回车。
+   脚本用 `GIT_CONFIG_NOSYSTEM=1` 绕过旧凭据助手，临时把令牌写进 remote URL 执行
+   `git push -u origin main`，随后立即恢复原 URL；令牌不回显、不写进仓库、不需要发到聊天里。
+3. 看到 `[OK] Push succeeded.` 即完成；若 `[FAIL]`，把黑窗口报错截图发我。
 
-> **21:49 首次双击报错修复**：黑窗口显示 `'git' 不是内部或外部命令` —— 系统 PATH 里没有 git
-> （WorkBuddy 使用自带的便携版 Git）。已把 `push-to-github.bat` 改为直接调用
-> `C:\Users\25740\.workbuddy\binaries\PortableGit\versions\1.3.0\cmd\git.exe` 并把该目录加入 PATH；
-> 同时增加「直连失败 → 自动改用注册表里的本地代理 `127.0.0.1:7890`」二次尝试。
-> 注意：注册表显示 `ProxyEnable=0`（系统代理未启用），该端口实测未监听，二次尝试仅作兜底。
+一次推完 **116 个文件（含 22 张图片）与 6 个本地提交**。
+
+> **21:49 首次双击报错**：`'git' 不是内部或外部命令` —— 系统 PATH 没有 git，已改为直接调用便携版
+> `C:\Users\25740\.workbuddy\binaries\PortableGit\versions\1.3.0\cmd\git.exe`。
+> **21:52 第二次报错**：`Invalid username or token. Password authentication is not supported`，
+> 已改为 PAT 流程；脚本语法检查 0 错误，清空全部代理后 `ls-remote` EXIT=0（链路可用）。
+> 注册表 `ProxyEnable=0`、本地 7890 端口未监听，系统代理不可用。
 
 > 你的浏览器能正常打开 GitHub，说明本机网络没问题；502 只发生在 WorkBuddy 沙箱代理里。
 
