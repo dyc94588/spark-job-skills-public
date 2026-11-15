@@ -170,8 +170,9 @@ git push -u origin main
 | 敏感项复扫（真名 / 学号 / 导师 / 学院 / 口令 / 本机路径 / 本机账户名） | 0 命中 ✅ |
 | `git commit`（化名身份 `SparkJobSkills Contributors`） | 已完成 ✅ |
 | 分支 `main` | 已完成 ✅ |
-| `git remote add origin https://github.com/dyc94588/spark-job-skills-public.git` | 已生成，待推送 |
-| `git push -u origin main` | GitHub 已授权（`dyc94588`），待推送 |
+| `git remote add origin https://github.com/dyc94588/spark-job-skills-public.git` | 已配置 ✅ |
+| 线上空仓库 `dyc94588/spark-job-skills-public`（Public） | 已创建 ✅ |
+| `git push -u origin main` | **待双击 `push-to-github.bat`** |
 
 因此上面的推送命令块里，**只需执行 `git remote add origin …` 与 `git push -u origin main` 两行**；
 若通过 GitHub Connector 授权，则由 AI 直接完成这两步。
@@ -182,20 +183,25 @@ git push -u origin main
 |---|---|---|
 | GitHub Connector 授权 | `get_me` 成功，账号 **`dyc94588`** | 连接正常 ✅ |
 | Connector 新建仓库 | `POST /user/repos` → **403 Resource not accessible by integration**（换最小参数重试仍 403） | 该授权范围不含「新建仓库」权限，需网页手工创建 ❌ |
+| Connector 向新仓库推文件 | `push_files` → **403 Resource not accessible by integration** | 授权范围只覆盖授权时已存在的 3 个旧仓库，新建仓库未纳入 → 只能走本地 git ❌ |
+| 目标线上仓库 | 已由用户在网页创建：Public / 空 / 无 README（`git ref/heads/main` 返回 409 Empty） | 已就绪 ✅ |
 | 本机 git push（WorkBuddy 沙箱） | `CONNECT tunnel failed, response 502` / 超时 | 沙箱代理不通 GitHub ❌ |
 | 清空代理直连 | 收到 ref listing 后超时（`expected flush after ref listing`） | 直连不稳定 ❌ |
 | 本机 git 凭据 | `git credential fill` 已返回缓存凭据（值未显示） | 用户自己的终端可直接 push ✅ |
 
-### 需要你做的（各一次，约 1 分钟）
+### 现在只差一步（2026-11-15 21:45）
 
-1. **网页建空仓**：打开 <https://github.com/new>，仓库名 `spark-job-skills-public`，
-   选 **Public**，**不要**勾选 Add a README / .gitignore / license，点 Create repository。
-   建好后告诉我，我会用 Connector 尝试直接推送；若二进制图片受接口限制，再执行第 2 步。
-2. **一键推送**：双击桌面 `push-to-github.bat`（remote 与凭据都已就绪，脚本先清空代理再执行
-   `git push -u origin main`），一次推完全部 116 个文件（含 22 张图片）。
-   也可自己开 Git Bash 执行 `cd /c/Users/25740/Desktop/spark-job-skills-public && git push -u origin main`。
+仓库已由你在网页建好：Public、空、无 README（截图确认，远端 `refs/heads/main` 返回 409 Git Repository is empty）。
+连接通道对该新仓库**没有写权限**（403），WorkBuddy 沙箱网络也连不上 GitHub，
+因此唯一路径是在**你自己的终端**推送：
 
-> 注意：用户自己的终端没有沙箱的 502 代理，通常能正常连通；这也是能一次推完图片的唯一路径。
+**双击桌面 `push-to-github.bat`** —— remote 与本机凭据都已就绪，脚本先清空代理再执行
+`git push -u origin main`，一次推完全部 **116 个文件（含 22 张图片）与 4 个本地提交**。
+看到 `[OK] Push succeeded.` 即完成；若 `[FAIL]`，把黑窗口里的报错截图发我。
+
+也可自己开 Git Bash：`cd /c/Users/25740/Desktop/spark-job-skills-public && git push -u origin main`。
+
+> 你的浏览器能正常打开 GitHub，说明本机网络没问题；502 只发生在 WorkBuddy 沙箱代理里。
 
 ## 推送前仍需你确认
 
