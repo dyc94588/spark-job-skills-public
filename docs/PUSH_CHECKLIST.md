@@ -201,6 +201,12 @@ git push -u origin main
 
 也可自己开 Git Bash：`cd /c/Users/25740/Desktop/spark-job-skills-public && git push -u origin main`。
 
+> **21:49 首次双击报错修复**：黑窗口显示 `'git' 不是内部或外部命令` —— 系统 PATH 里没有 git
+> （WorkBuddy 使用自带的便携版 Git）。已把 `push-to-github.bat` 改为直接调用
+> `C:\Users\25740\.workbuddy\binaries\PortableGit\versions\1.3.0\cmd\git.exe` 并把该目录加入 PATH；
+> 同时增加「直连失败 → 自动改用注册表里的本地代理 `127.0.0.1:7890`」二次尝试。
+> 注意：注册表显示 `ProxyEnable=0`（系统代理未启用），该端口实测未监听，二次尝试仅作兜底。
+
 > 你的浏览器能正常打开 GitHub，说明本机网络没问题；502 只发生在 WorkBuddy 沙箱代理里。
 
 ## 推送前仍需你确认
